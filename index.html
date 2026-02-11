@@ -1,51 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>kerecsen.xyz</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kerecsen Szabó – Machine Learning Engineer</title>
   <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.3);
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
       min-height: 100vh;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3.5rem;
+    }
+
+    header {
+      padding: 1.25rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: conic-gradient(from 220deg, #22c55e, #0ea5e9, #a855f7, #22c55e);
+      padding: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+    }
+
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e5e7eb;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .brand-title {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 0.98rem;
+    }
+
+    .brand-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.86rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.16s ease-out;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    nav a:hover {
+      color: #f9fafb;
+      border-color: var(--accent-soft);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius: 1.25rem;
+      }
+      nav {
+        width: 100%;
+      }
+    }
+
+    .hero {
+      padding: 1.75rem 1.75rem 1.9rem;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), #020617);
+      border-radius: 1.5rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.7);
+      margin-bottom: 1.75rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.26rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 4vw, 2.9rem);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-meta span {
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-body {
+      font-size: 0.96rem;
+      color: var(--text-main);
+    }
+
+    .stack {
+      padding: 1.4rem 1.5rem 1.5rem;
+      border-radius: 1.5rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.92);
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.6rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.8rem;
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .sidebar-card {
+      padding: 1.5rem 1.5rem 1.6rem;
+      border-radius: 1.4rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.96);
+      margin-bottom: 1.3rem;
+    }
+
+    .sidebar-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .muted {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .timeline {
+      margin-top: 0.8rem;
+      border-left: 1px solid rgba(55, 65, 81, 0.8);
+      padding-left: 1rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 0.9rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.44rem;
+      top: 0.35rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+    }
+
+    .timeline-title {
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .timeline-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.9rem;
+    }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .link-pill span.icon {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
       text-align: center;
-      padding: 2rem;
-    }
-    .hello {
-      font-size: clamp(3rem, 10vw, 8rem);
-      font-weight: 800;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      margin-bottom: 1rem;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-    .subtext {
-      font-size: 1.5rem;
-      opacity: 0.9;
-      max-width: 600px;
-    }
-    @keyframes glow {
-      from { text-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.2); }
-      to { text-shadow: 0 4px 30px rgba(0,0,0,0.4), 0 0 50px rgba(255,255,255,0.4); }
-    }
-    @media (max-width: 768px) {
-      .subtext { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
-  <div>
-    <h1 class="hello">Hello!</h1>
-    <p class="subtext">kerecsen.xyz — Machine Learning Engineer, Runner, Budapest</p>
+  <div class="wrapper">
+    <header>
+      <div class="brand">
+        <div class="avatar">
+          <div class="avatar-inner">K</div>
+        </div>
+        <div>
+          <div class="brand-title">Kerecsen</div>
+          <div class="brand-sub">Machine Learning Engineer · Budapest</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Left column -->
+      <div>
+        <section class="hero" id="about">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            Available for interesting ML / data engineering work
+          </div>
+          <h1>Building data‑driven products that ship.</h1>
+          <p class="hero-subtitle">
+            Machine Learning Engineer with a strong background in Python, data platforms,
+            and shipping models into production.
+          </p>
+          <div class="hero-meta">
+            <span>Budapest, Hungary</span>
+            <span>ML · MLOps · Data Engineering</span>
+            <span>Running, sustainability, music</span>
+          </div>
+          <p class="hero-body">
+            I enjoy turning messy, real‑world data into robust, measurable systems –
+            from experimentation and model development to monitoring in production.
+            Recently, I’ve been focusing on modern ML tooling, scalable data pipelines,
+            and pragmatic applications of generative AI.
+          </p>
+        </section>
+
+        <section class="stack">
+          <div class="section-title">Core stack</div>
+          <div class="chips">
+            <div class="chip">Python · PyTorch · scikit‑learn</div>
+            <div class="chip">Pandas · SQL</div>
+            <div class="chip">Spark · Databricks</div>
+            <div class="chip">MLflow · experiment tracking</div>
+            <div class="chip">Docker · CI/CD</div>
+            <div class="chip">GitHub · code review</div>
+            <div class="chip">Dashboards · monitoring</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right column -->
+      <div>
+        <section class="sidebar-card" id="experience">
+          <h3>Recent experience</h3>
+          <p class="muted">
+            End‑to‑end ML & data work: discovery, modelling, deployment, and iteration with
+            product teams.
+          </p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-title">Machine Learning Engineer</div>
+              <div class="timeline-meta">The Estée Lauder Companies · Present</div>
+              <div class="muted">
+                Working on data products and ML solutions that support decision‑making
+                and customer experiences.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Machine Learning Engineer</div>
+              <div class="timeline-meta">EPAM Systems · Previously</div>
+              <div class="muted">
+                Built and optimized data pipelines, analytics models, and dashboards on
+                cloud platforms with Spark and SQL.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="sidebar-card" id="projects">
+          <h3>Selected projects</h3>
+          <ul class="muted" style="margin-left:1rem; margin-top:0.4rem;">
+            <li>
+              Production‑grade ML pipelines on Databricks, including feature engineering,
+              retraining, and monitoring.
+            </li>
+            <li>
+              Internal tools that automate data quality checks and reduce manual reporting work.
+            </li>
+            <li>
+              Personal experiments with generative models and small web tools (like brusszel.com).
+            </li>
+          </ul>
+        </section>
+
+        <section class="sidebar-card" id="contact">
+          <h3>Contact & links</h3>
+          <p class="muted">
+            Best way to reach me is by email. I’m happy to talk about ML, data platforms,
+            or running routes around Budapest.
+          </p>
+          <div class="link-row">
+            <a class="link-pill" href="mailto:mail@kerecsen.xyz">
+              <span class="icon">✉️</span>
+              <span>Email</span>
+            </a>
+            <a class="link-pill" href="https://github.com/kerecsenszabo" target="_blank" rel="noreferrer">
+              <span class="icon">💻</span>
+              <span>GitHub</span>
+            </a>
+            <a class="link-pill" href="https://www.strava.com/athletes/120392908" target="_blank" rel="noreferrer">
+              <span class="icon">🏃</span>
+              <span>Strava</span>
+            </a>
+            <a class="link-pill" href="https://www.linkedin.com/in/kerecsen-szabo" target="_blank" rel="noreferrer">
+              <span class="icon">🔗</span>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Kerecsen Szabó · kerecsen.xyz
+    </footer>
   </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
