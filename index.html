@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kerecsen.xyz</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    .hello {
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 800;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      margin-bottom: 1rem;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    .subtext {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      max-width: 600px;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.2); }
+      to { text-shadow: 0 4px 30px rgba(0,0,0,0.4), 0 0 50px rgba(255,255,255,0.4); }
+    }
+    @media (max-width: 768px) {
+      .subtext { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1 class="hello">Hello!</h1>
+    <p class="subtext">kerecsen.xyz — Machine Learning Engineer, Runner, Budapest</p>
+  </div>
+</body>
+</html>
