@@ -21,7 +21,7 @@
       color: var(--text-main);
       line-height: 1.6; min-height: 100vh;
     }
-    .wrapper { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 3.5rem; }
+    .wrapper { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem; }
     header {
       padding: 1.25rem 1.5rem; border-radius: 999px; border: 1px solid var(--border-subtle);
       background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(16px);
@@ -53,12 +53,12 @@
       gap: 2rem; align-items: start;
     }
     @media (max-width: 900px) {
-      main { grid-template-columns: minmax(0, 1fr); }
+      main { grid-template-columns: minmax(0, 1fr); gap: 0; }
       header { flex-direction: column; align-items: flex-start; border-radius: 1.25rem; }
       nav { width: 100%; }
     }
     .hero {
-      padding: 1.75rem 1.75rem 1.9rem;
+      padding: 1.75rem;
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), #020617);
       border-radius: 1.5rem; border: 1px solid var(--border-subtle);
       box-shadow: 0 18px 60px rgba(15, 23, 42, 0.7); margin-bottom: 1.75rem;
@@ -68,16 +68,16 @@
       padding: 0.26rem 0.7rem; border-radius: 999px;
       background: rgba(15, 23, 42, 0.95);
       border: 1px solid rgba(148, 163, 184, 0.3);
-      color: var(--text-muted); font-size: 0.75rem; margin-bottom: 1.2rem;
+      color: var(--text-muted); font-size: 0.75rem; margin-bottom: 1rem;
     }
     .pill-dot {
-      width: 7px; height: 7px; border-radius: 999px; background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+      width: 8px; height: 8px; border-radius: 999px; background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
     }
-    h1 { font-size: clamp(2.25rem, 4vw, 2.9rem); letter-spacing: 0.02em; margin-bottom: 0.4rem; }
-    .hero-subtitle { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+    h1 { font-size: clamp(2rem, 4vw, 2rem); letter-spacing: 0.02em; margin-bottom: 1rem; }
+    .hero-subtitle { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1rem; }
     .hero-meta {
-      display: flex; flex-wrap: wrap; gap: 0.8rem; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.2rem;
+      display: flex; flex-wrap: wrap; gap: 0.8rem; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;
     }
     .hero-meta span {
       padding: 0.18rem 0.6rem; border-radius: 999px;
@@ -85,11 +85,11 @@
     }
     .hero-body { font-size: 0.96rem; color: var(--text-main); }
     .stack {
-      padding: 1.4rem 1.5rem 1.5rem; border-radius: 1.5rem; border: 1px solid var(--border-subtle); background: rgba(15, 23, 42, 0.92);
+      padding: 1.5rem; border-radius: 1.5rem; border: 1px solid var(--border-subtle); background: rgba(15, 23, 42, 0.92); margin-bottom: 1.75rem;
     }
     .section-title {
       font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase;
-      letter-spacing: 0.14em; margin-bottom: 0.6rem;
+      letter-spacing: 0.14em; margin-bottom: 1rem;
     }
     .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .chip {
@@ -97,22 +97,22 @@
       font-size: 0.8rem; color: var(--text-main); background: rgba(15, 23, 42, 0.9);
     }
     .sidebar-card {
-      padding: 1.5rem 1.5rem 1.6rem; border-radius: 1.4rem;
-      border: 1px solid var(--border-subtle); background: rgba(15, 23, 42, 0.96); margin-bottom: 1.3rem;
+      padding: 1.5rem; border-radius: 1.4rem;
+      border: 1px solid var(--border-subtle); background: rgba(15, 23, 42, 0.96); margin-bottom: 1.75rem;
     }
-    .sidebar-card h3 { font-size: 1rem; margin-bottom: 0.6rem; }
+    .sidebar-card h3 { font-size: 1rem; margin-bottom: 1rem; }
     .muted { font-size: 0.88rem; color: var(--text-muted); }
     .timeline {
-      margin-top: 0.8rem; border-left: 1px solid rgba(55, 65, 81, 0.8); padding-left: 1rem;
+      margin-top: 1rem; border-left: 1px solid rgba(55, 65, 81, 0.8); padding-left: 1rem;
     }
-    .timeline-item { margin-bottom: 0.9rem; position: relative; }
+    .timeline-item { margin-bottom: 1rem; position: relative; }
     .timeline-item::before {
-      content: ""; position: absolute; left: -1.44rem; top: 0.35rem;
-      width: 9px; height: 9px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+      content: ""; position: absolute; left: calc(-1rem - 4.5px); top: 0.35rem;
+      width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
     }
     .timeline-title { font-size: 0.92rem; font-weight: 500; }
-    .timeline-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.2rem; }
-    .link-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.9rem; }
+    .timeline-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .link-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
     .link-pill {
       display: inline-flex; align-items: center; gap: 0.35rem;
       padding: 0.35rem 0.8rem; border-radius: 999px; font-size: 0.82rem;
@@ -148,20 +148,19 @@
         <section class="hero" id="about">
           <div class="pill">
             <span class="pill-dot"></span>
-            Available for interesting ML / Data Engineering work
+             Available for interesting ML / Data Engineering work
           </div>
-          <h1>Machine Learning Engineer | Data Engineering Specialist</h1>
+          <h1>Machine Learning Engineer</h1>
           <p class="hero-subtitle">
             Machine Learning Engineer with 8+ years of experience spanning software development and advanced ML roles.
           </p>
           <div class="hero-meta">
-            <span>Hungary</span>
             <span>ML · MLOps · Data Engineering · AI Innovation</span>
           </div>
           <p class="hero-body">
             I specialize in data engineering, machine learning algorithms, and data architecture.
             Currently, I am driving AI innovation at The Estée Lauder Companies, building scalable ML pipelines and deploying production-grade systems with Databricks and modern ML tooling. Previously, I worked in both ML and software engineering roles in large international organizations and startups.<br><br>
-            Published research and a passion for community engagement. Let's connect!
+            Published research and a passion for community engagement.
           </p>
         </section>
 
@@ -188,7 +187,7 @@
 
         <section class="sidebar-card" id="projects">
           <h3>Selected projects & achievements</h3>
-          <ul class="muted" style="margin-left:1rem; margin-top:0.4rem;">
+          <ul class="muted" style="margin-left:1rem; margin-top:1rem;">
             <li>Publication: <em>Evaluating the Socioeconomic Status of a Large Social Event Attendees</em> (IEEE, Oct 2022)</li>
             <li>Featured projects and publications in ML/data engineering</li>
             <li>Ultrabalaton endurance running challenge 2025</li>
@@ -232,42 +231,24 @@
 
             <div class="timeline-item">
               <div class="timeline-title">Machine Learning Engineer</div>
-              <div class="timeline-meta">The Estée Lauder Companies Inc.<br>Nov 2025 – Present · Budapest, Hybrid</div>
+              <div class="timeline-meta">The Estée Lauder Companies<br>Nov 2025 – Present</div>
               <div class="muted">Driving AI innovation, building scalable ML pipelines and production-grade systems using Databricks. Focus: time series forecasting.</div>
             </div>
 
             <div class="timeline-item">
-              <div class="timeline-title">Data Engineer</div>
-              <div class="timeline-meta">EPAM Systems<br>Aug 2025 – Oct 2025</div>
-              <div class="muted">Data architecture and engineering, code review.</div>
-            </div>
-
-            <div class="timeline-item">
               <div class="timeline-title">Machine Learning Engineer</div>
-              <div class="timeline-meta">EPAM Systems<br>May 2023 – Aug 2025</div>
+              <div class="timeline-meta">EPAM Systems<br>Feb 2023 – Oct 2025</div>
               <div class="muted">ML pipelines and analytics on Databricks and Spark, building reusable systems.</div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-title">Data Engineer</div>
-              <div class="timeline-meta">EPAM Systems<br>Feb 2023 – Apr 2023</div>
-              <div class="muted">Cloud data engineering and architecture, code review. Focus on scalable platform work.</div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-title">Machine Learning Engineer</div>
-              <div class="timeline-meta">EPAM Systems<br>Feb 2023 (1 mo)</div>
-              <div class="muted">Rapid prototyping, containerization, ML experimentation.</div>
             </div>
             
             <div class="timeline-item">
               <div class="timeline-title">Software Engineer</div>
-              <div class="timeline-meta">Drem Innovation and Consulting Ltd.<br>Jul 2018 – Jan 2023</div>
+              <div class="timeline-meta">Drem Innovation and Consulting<br>Jul 2018 – Jan 2023</div>
               <div class="muted">Building C++-based systems, robust software engineering for real-world usage.</div>
             </div>
             <div class="timeline-item">
               <div class="timeline-title">Junior Software Engineer</div>
-              <div class="timeline-meta">Drem Innovation and Consulting Ltd.<br>May 2017 – Jun 2018</div>
+              <div class="timeline-meta">Drem Innovation and Consulting<br>May 2017 – Jun 2018</div>
               <div class="muted">Part-time, C++ and C systems, expanding professional skill set.</div>
             </div>
           </div>
@@ -291,7 +272,7 @@
 
         <section class="sidebar-card" id="certs">
           <h3>Certifications</h3>
-          <ul class="muted" style="margin-left:1rem; margin-top:0.4rem;">
+          <ul class="muted" style="margin-left:1rem; margin-top:1rem;">
             <li>Databricks Certified Associate Developer for Apache Spark</li>
             <li>EngX Learning Journey Program: SW Development, Secure Coding, Code Review</li>
           </ul>
