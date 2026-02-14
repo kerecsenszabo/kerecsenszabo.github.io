@@ -1,2 +1,1 @@
-# kerecsenszabo.github.io
-kerecsen.xyz
+# kerecsen.xyz
