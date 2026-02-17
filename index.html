@@ -27,7 +27,16 @@
       background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(16px);
       display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-bottom: 2.5rem;
     }
-    .brand { display: flex; align-items: center; gap: 0.85rem; }
+    .brand {
+      display: flex; align-items: center; gap: 0.85rem;
+      text-decoration: none; color: inherit;
+    }
+    .brand:hover .brand-title { color: #f9fafb; }
+    .brand:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 999px;
+    }
     .avatar {
       width: 40px; height: 40px; border-radius: 999px;
       background: conic-gradient(from 220deg, #22c55e, #0ea5e9, #a855f7, #22c55e);
@@ -125,7 +134,7 @@
 <body>
   <div class="wrapper">
     <header>
-      <div class="brand">
+      <a class="brand" href="https://kerecsen.xyz" target="_blank" rel="noreferrer">
         <div class="avatar">
           <div class="avatar-inner">K</div>
         </div>
@@ -133,7 +142,7 @@
           <div class="brand-title">Kerecsen Szabó</div>
           <div class="brand-sub">Machine Learning Engineer · Budapest, Hungary</div>
         </div>
-      </div>
+      </a>
       <nav>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
